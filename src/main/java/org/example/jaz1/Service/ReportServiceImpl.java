@@ -4,6 +4,7 @@ import org.example.jaz1.Entity.Report;
 import org.example.jaz1.Entity.ReportCreateRequest;
 import org.example.jaz1.Entity.ReportResponse;
 import org.example.jaz1.Repository.ReportRepository;
+import org.example.jaz1.mapper.ReportMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +17,21 @@ import java.util.stream.Collectors;
 @Service
 public class ReportServiceImpl implements ReportService {
 
-    @Autowired
-    private ReportRepository reportRepository;
+    private final ReportRepository reportRepository;
+    private final ReportMapper mapper;
 
-
+    public ReportServiceImpl(ReportRepository reportRepository, ReportMapper reportMapper, ReportMapper mapper) {
+        this.reportRepository = reportRepository;
+        this.mapper = mapper;
+    }
 
     @Override
     public List<ReportResponse> getAllReports() {
-        return reportRepository.findAll().stream()
-                .map(this::convertToResponse).collect(Collectors.toList());
+        return reportRepository
+                .findAll()
+                .stream()
+                .map(mapper::toEntity)
+                .collect(Collectors.toList());
     }
 
     @Override
