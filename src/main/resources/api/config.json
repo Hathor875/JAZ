@@ -1,0 +1,10 @@
+{
+  "apiPackage": "org.example.jaz1.api",
+  "modelPackage": "org.example.jaz1.model",
+  "hideGenerationTimestamp": true,
+  "useBeanValidation": true,
+  "interfaceOnly": true,
+  "defaultInterfaces": false,
+  "skipDefaultInterface": true,
+  "java8": true
+}
