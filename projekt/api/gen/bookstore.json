@@ -1,0 +1,9 @@
+{
+  "apiPackage": "store.api",
+  "modelPackage": "store.model",
+  "useBeanValidation": true,
+  "interfaceOnly": true,
+  "defaultInterfaces": false,
+  "skipDefaultInterface": true,
+  "java8": true
+}
